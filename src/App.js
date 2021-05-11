@@ -1,15 +1,20 @@
 import { Provider } from 'react-redux'
 import generateStore from './redux/store'
 import Listado from './components/Listado'
+import Ejemplo from './components/Ejemplo'
+import Recipes from './components/Recipes'
+import store from './redux/store'
 
 function App() {
 
-    const store = generateStore()
+    // const store = generateStore()
 
     return (
         <Provider store={store}>
-            <h2>Hola mundo</h2>
-            <Listado />
+            {/* <Listado /> */}
+            <Ejemplo />
+            <hr />
+            <Recipes />
         </Provider>
   );
 }

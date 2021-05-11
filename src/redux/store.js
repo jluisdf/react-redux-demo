@@ -1,15 +1,17 @@
-import {createStore, combineReducers, compose, applyMiddleware} from 'redux'
-import thunk from 'redux-thunk'
+import { configureStore } from '@reduxjs/toolkit'
+import counterReducer from '../slices/counter'
+import todosReducer from '../slices/todos'
+import visibilityFilterReducer from '../slices/filters'
+import userSlice from '../slices/user';
+import recipesReducer from '../slices/recipes';
 
-import testReducer from './testDuck'
 
-const rootReducer = combineReducers({
-    ejemplo: testReducer
+export default configureStore({
+    reducer: {
+        counter: counterReducer,
+        todos: todosReducer,
+        visibilityFilter: visibilityFilterReducer,
+        user: userSlice,
+        recipes: recipesReducer,
+    },
 })
-
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-export default function generateStore() {
-    const store = createStore( rootReducer, composeEnhancers( applyMiddleware(thunk) ) )
-    return store
-}
